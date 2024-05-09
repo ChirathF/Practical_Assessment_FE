@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-header>
+        <div class="m-3">
+            <mat-card-title>Add New Teacher</mat-card-title>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="teacherFG" (ngSubmit)="saveTeacher(teacherFG.value)">
+            <div class="row mt-2">
+                <div class="col-md-3 p-3">
+                    <mat-form-field class="full-width ml-2">
+                        <input type="text" matInput placeholder="First Name" formControlName="fname" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-3 p-3">
+                    <mat-form-field class="full-width ml-2">
+                        <input type="text" matInput placeholder="Last Name" formControlName="lname" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="d-flex flex-row mt-2">
+                <button mat-raised-button color="primary" class="m-1" type="submit"
+                    [disabled]="!teacherFG.valid">Save</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
+<mat-card class="flex-item">
+    <div class="container-fluid page">
+        <div class="d-flex page__box p-3 mt-2 text-light bg-dark">Teachers</div>
+        <div class="p-2">
+            <table class="table table-striped table-hover table-bordered table-content ml-4">
+                <thead>
+                    <tr class="center-align ">
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let th of teachers |paginate: { itemsPerPage: 5, currentPage: p } " class="center-align">
+                        <td>{{th.fname}} {{th.lname}}</td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</mat-card>
