@@ -19,8 +19,8 @@
                 </div>
             </div>
             <div class="d-flex flex-row mt-2">
-                <button mat-raised-button color="primary" class="m-1" type="submit"
-                    [disabled]="!teacherFG.valid">Save</button>
+                <button mat-raised-button color="primary" class="m-1" type="submit" [disabled]="!teacherFG.valid">Save</button>
+                <button mat-raised-button color="warn" class="m-1" type="reset" (click)="clearForm()">Clear</button>
             </div>
         </form>
     </mat-card-content>

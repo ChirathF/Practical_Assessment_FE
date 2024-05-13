@@ -65,4 +65,14 @@ export class TeacherComponent implements OnInit {
       }
     })
   }
+
+  clearForm(): void {
+    this.teacherFG.reset({
+      fname: '',
+      lname: ''
+    });
+  }
+
+
+
 }
